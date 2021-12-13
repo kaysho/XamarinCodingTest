@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
 using Android.OS;
+using Android.Runtime;
 
 namespace Steer73.FormsApp.Droid
 {
@@ -11,7 +11,6 @@ namespace Steer73.FormsApp.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

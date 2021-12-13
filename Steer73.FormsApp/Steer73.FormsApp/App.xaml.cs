@@ -8,7 +8,7 @@ namespace Steer73.FormsApp
         public App()
         {
             InitializeComponent();
-
+            Sharpnado.Shades.Initializer.Initialize(loggerEnable: false);
             MainPage = new UsersView();
         }
     }

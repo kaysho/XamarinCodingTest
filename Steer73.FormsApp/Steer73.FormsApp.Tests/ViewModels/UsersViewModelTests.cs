@@ -4,7 +4,6 @@ using Steer73.FormsApp.Framework;
 using Steer73.FormsApp.Model;
 using Steer73.FormsApp.ViewModels;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Steer73.FormsApp.Tests.ViewModels
@@ -15,6 +14,7 @@ namespace Steer73.FormsApp.Tests.ViewModels
         [Test]
         public async Task InitializeFetchesTheData()
         {
+            //Arrange
             var userService = new Mock<IUserService>();
             var messageService = new Mock<IMessageService>();
 
@@ -22,14 +22,23 @@ namespace Steer73.FormsApp.Tests.ViewModels
                 userService.Object,
                 messageService.Object);
 
+
+            //Act
             userService
                 .Setup(p => p.GetUsers())
-                .Returns(Task.FromResult(Enumerable.Empty<User>()))
-                .Verifiable();
+                .ReturnsAsync(new[]
+                {
+                    new User { FirstName = "Milosz", LastName = "Skalecki" },
+                    new User { FirstName = "Jon", LastName = "Bennett" },
+                    new User { FirstName = "Alex", LastName = "Welding" },
+                    new User { FirstName = "Nick", LastName = "Waites" },
+                });
 
             await viewModel.Initialize();
 
-            userService.VerifyAll();
+
+            //Assert
+            Assert.IsTrue(viewModel.Users.Count != 0);
         }
 
         [Test]

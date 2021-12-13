@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="Steer73.FormsApp.Styles.Resources.CustomTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:Steer73.FormsApp.Model"
+    xmlns:sh="http://sharpnado.com"
+    xmlns:template="clr-namespace:Steer73.FormsApp.Templates">
+
+    <DataTemplate x:Key="UserDefaultTemplate" x:DataType="model:User">
+        <sh:Shadows CornerRadius="40">
+            <StackLayout
+                Margin="10"
+                Padding="10"
+                BackgroundColor="White"
+                Spacing="2">
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="First name:" />
+                    <Label Text="{Binding FirstName}" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Last name:" />
+                    <Label Text="{Binding LastName}" />
+                </StackLayout>
+
+            </StackLayout>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup Name="CommonStates">
+                    <VisualState Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="White" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </sh:Shadows>
+    </DataTemplate>
+
+    <template:UserTemplateSelector x:Key="UserTemplateSelector" DefaultTemplate="{StaticResource UserDefaultTemplate}" />
+</ResourceDictionary>

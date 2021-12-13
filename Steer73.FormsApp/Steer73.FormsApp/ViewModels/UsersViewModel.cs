@@ -1,7 +1,7 @@
 ﻿using Steer73.FormsApp.Framework;
 using Steer73.FormsApp.Model;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace Steer73.FormsApp.ViewModels
@@ -11,9 +11,8 @@ namespace Steer73.FormsApp.ViewModels
         private readonly IUserService _userService;
         private readonly IMessageService _messageService;
 
-        public UsersViewModel(
-            IUserService userService,
-            IMessageService messageService)
+        public UsersViewModel(IUserService userService,
+                              IMessageService messageService)
         {
             _userService = userService;
             _messageService = messageService;
@@ -42,8 +41,14 @@ namespace Steer73.FormsApp.ViewModels
             }
         }
 
-        public bool IsBusy { get; set; }
+        bool isBusy = false;
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set { SetProperty(ref isBusy, value); }
+        }
 
-        public ICollection<User> Users { get; } = new List<User>();
+
+        public ObservableCollection<User> Users { get; } = new ObservableCollection<User>();
     }
 }
