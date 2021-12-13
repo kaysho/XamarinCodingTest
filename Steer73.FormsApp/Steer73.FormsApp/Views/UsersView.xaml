@@ -1,8 +1,37 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="Steer73.FormsApp.Views.UsersView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Steer73.FormsApp.Views.UsersView">
+    xmlns:vm="clr-namespace:Steer73.FormsApp.ViewModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:DataType="vm:UsersViewModel"
+    BackgroundColor="White">
+
     <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Margin="10,10,0,0"
+                FontAttributes="Bold"
+                FontSize="Title"
+                Text="Users" />
+            <Grid>
+
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="{Binding IsBusy}"
+                    Text="Loading..."
+                    VerticalOptions="CenterAndExpand" />
+                <CollectionView
+                    HorizontalScrollBarVisibility="Never"
+                    ItemTemplate="{StaticResource UserTemplateSelector}"
+                    ItemsSource="{Binding Users}"
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Never" />
+            </Grid>
+
+        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

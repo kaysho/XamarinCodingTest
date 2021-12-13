@@ -9,6 +9,7 @@ namespace Steer73.FormsApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            NugetInstallers.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
