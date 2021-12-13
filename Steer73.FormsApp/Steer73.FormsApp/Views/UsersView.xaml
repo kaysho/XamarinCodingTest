@@ -9,20 +9,29 @@
     BackgroundColor="White">
 
     <ContentPage.Content>
-        <Grid Margin="20">
+        <StackLayout>
             <Label
-                HorizontalOptions="CenterAndExpand"
-                HorizontalTextAlignment="Center"
-                IsVisible="{Binding IsBusy}"
-                Text="Loading..."
-                VerticalOptions="CenterAndExpand" />
-            <CollectionView
-                HorizontalScrollBarVisibility="Never"
-                ItemTemplate="{StaticResource UserTemplateSelector}"
-                ItemsSource="{Binding Users}"
-                SelectionMode="Single"
-                VerticalScrollBarVisibility="Never" />
-        </Grid>
+                Margin="10,10,0,0"
+                FontAttributes="Bold"
+                FontSize="Title"
+                Text="Users" />
+            <Grid>
+
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="{Binding IsBusy}"
+                    Text="Loading..."
+                    VerticalOptions="CenterAndExpand" />
+                <CollectionView
+                    HorizontalScrollBarVisibility="Never"
+                    ItemTemplate="{StaticResource UserTemplateSelector}"
+                    ItemsSource="{Binding Users}"
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Never" />
+            </Grid>
+
+        </StackLayout>
 
     </ContentPage.Content>
 </ContentPage>

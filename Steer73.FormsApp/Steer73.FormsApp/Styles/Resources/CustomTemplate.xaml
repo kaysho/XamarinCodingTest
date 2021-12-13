@@ -10,10 +10,10 @@
     <DataTemplate x:Key="UserDefaultTemplate" x:DataType="model:User">
         <sh:Shadows CornerRadius="40">
             <StackLayout
-                Margin="10"
+                Margin="10,2,10,10"
                 Padding="10"
                 BackgroundColor="White"
-                Spacing="2">
+                Spacing="10">
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="First name:" />
